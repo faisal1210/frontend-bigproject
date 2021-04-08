@@ -21,7 +21,7 @@ export default class TodosList extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://backend.ical.host/todos/')
+        axios.get('https://backend.ical.host/todos/')
             .then(response => {
                 this.setState({ todos: response.data });
             })
