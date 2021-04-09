@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-dev
+  namespace: staging
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: frontend-dev
+    spec:
+      containers:
+        - name: frontend-prod
+          image: 768876311475.dkr.ecr.ap-southeast-1.amazonaws.com/frontend-dev:latest
+          ports:
+            - containerPort: 3000
+          resources:
+            limits:
+              cpu: 600m
+              memory: 768Mi
+            requests:
+              cpu: 200m
+              memory: 384Mi
+  selector:
+    matchLabels:
+      app: frontend-dev
